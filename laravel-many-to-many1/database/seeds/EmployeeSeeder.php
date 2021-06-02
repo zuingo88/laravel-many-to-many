@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
 use App\Employee;
+use App\Location;
 
 class EmployeeSeeder extends Seeder
 {
@@ -12,6 +14,13 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        factory(Employee::class, 15)->create();
+        factory(Employee::class, 50)->make()
+            ->each(function($employee) {
+
+                $location = Location::inRandomOrder()->first(); //prendo una location random
+                $employee->location()->associate($location);
+
+                $employee->save();
+            });
     }
 }
