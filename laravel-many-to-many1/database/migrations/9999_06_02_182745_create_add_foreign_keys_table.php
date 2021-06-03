@@ -38,15 +38,15 @@ class CreateAddForeignKeysTable extends Migration
      */
     public function down()
     {
-        // Schema::table('employees', function (Blueprint $table) {
+        Schema::table('employees', function (Blueprint $table) {
             
-        //     $table->dropForeign('employeelocation');                  
-        // });
+            $table->dropForeign('employeelocation');                  
+        });
 
-        // Schema::table('employee_task', function (Blueprint $table) {
+        Schema::table('employee_task', function (Blueprint $table) {
             
-        //     $table->dropForeign('taskemployee');
-        //     $table->dropForeign('employeetask');   
-        // });
+            $table->dropForeign('taskemployee');
+            $table->dropForeign('employeetask');   
+        });
     }
 }
